@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailong.mapper.TbProductImageMapper">
+  <resultMap id="BaseResultMap" type="com.hailong.pojo.TbProductImage">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="img_id" jdbcType="INTEGER" property="imgId" />
+    <result column="delete_time" jdbcType="INTEGER" property="deleteTime" />
+    <result column="order" jdbcType="INTEGER" property="order" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hailong.pojo.TbProductImage">
+    insert into product_image (id, img_id, delete_time, 
+      order, product_id)
+    values (#{id,jdbcType=INTEGER}, #{imgId,jdbcType=INTEGER}, #{deleteTime,jdbcType=INTEGER}, 
+      #{order,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hailong.pojo.TbProductImage">
+    insert into product_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="imgId != null">
+        img_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="order != null">
+        order,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="imgId != null">
+        #{imgId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

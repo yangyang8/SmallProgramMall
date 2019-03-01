@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailong.mapper.TbOrderMapper">
+  <resultMap id="BaseResultMap" type="com.hailong.pojo.TbOrder">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="total_price" jdbcType="BIGINT" property="totalPrice" />
+    <result column="total_pay" jdbcType="BIGINT" property="totalPay" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="total_cost" jdbcType="BIGINT" property="totalCost" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hailong.pojo.TbOrder">
+    insert into order (id, user_id, order_no, 
+      total_price, total_pay, create_time, 
+      pay_time, total_cost, state
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, 
+      #{totalPrice,jdbcType=BIGINT}, #{totalPay,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{totalCost,jdbcType=BIGINT}, #{state,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hailong.pojo.TbOrder">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="totalPay != null">
+        total_pay,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="totalCost != null">
+        total_cost,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=BIGINT},
+      </if>
+      <if test="totalPay != null">
+        #{totalPay,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalCost != null">
+        #{totalCost,jdbcType=BIGINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

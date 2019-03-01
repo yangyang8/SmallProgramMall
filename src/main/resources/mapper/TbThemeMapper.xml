@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailong.mapper.TbThemeMapper">
+  <resultMap id="BaseResultMap" type="com.hailong.pojo.TbTheme">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="topic_img_id" jdbcType="INTEGER" property="topicImgId" />
+    <result column="delete_time" jdbcType="INTEGER" property="deleteTime" />
+    <result column="head_img_id" jdbcType="INTEGER" property="headImgId" />
+    <result column="update_time" jdbcType="INTEGER" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hailong.pojo.TbTheme">
+    insert into theme (id, name, description, 
+      topic_img_id, delete_time, head_img_id, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{topicImgId,jdbcType=INTEGER}, #{deleteTime,jdbcType=INTEGER}, #{headImgId,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hailong.pojo.TbTheme">
+    insert into theme
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="topicImgId != null">
+        topic_img_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="headImgId != null">
+        head_img_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="topicImgId != null">
+        #{topicImgId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=INTEGER},
+      </if>
+      <if test="headImgId != null">
+        #{headImgId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

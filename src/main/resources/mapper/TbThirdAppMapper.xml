@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailong.mapper.TbThirdAppMapper">
+  <resultMap id="BaseResultMap" type="com.hailong.pojo.TbThirdApp">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="app_secret" jdbcType="VARCHAR" property="appSecret" />
+    <result column="app_description" jdbcType="VARCHAR" property="appDescription" />
+    <result column="scope" jdbcType="VARCHAR" property="scope" />
+    <result column="scope_description" jdbcType="VARCHAR" property="scopeDescription" />
+    <result column="delete_time" jdbcType="INTEGER" property="deleteTime" />
+    <result column="update_time" jdbcType="INTEGER" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hailong.pojo.TbThirdApp">
+    insert into third_app (id, app_id, app_secret, 
+      app_description, scope, scope_description, 
+      delete_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, 
+      #{appDescription,jdbcType=VARCHAR}, #{scope,jdbcType=VARCHAR}, #{scopeDescription,jdbcType=VARCHAR}, 
+      #{deleteTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hailong.pojo.TbThirdApp">
+    insert into third_app
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="appSecret != null">
+        app_secret,
+      </if>
+      <if test="appDescription != null">
+        app_description,
+      </if>
+      <if test="scope != null">
+        scope,
+      </if>
+      <if test="scopeDescription != null">
+        scope_description,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="appDescription != null">
+        #{appDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="scope != null">
+        #{scope,jdbcType=VARCHAR},
+      </if>
+      <if test="scopeDescription != null">
+        #{scopeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
